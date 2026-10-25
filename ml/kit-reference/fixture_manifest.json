@@ -1,0 +1,230 @@
+{
+  "schema_version": "optiflow_fixture_v1",
+  "is_synthetic": true,
+  "purpose": "engineering_fixture",
+  "eligible_for_health_training": false,
+  "contains_human_observations": false,
+  "contains_health_labels": false,
+  "test_policy": {
+    "bilateral_closed_below": 0.25,
+    "reopened_above": 0.65,
+    "min_blink_ms": 80,
+    "max_blink_ms": 500,
+    "max_contiguous_gap_ms": 150,
+    "minimum_event_sampling_hz": 10,
+    "boundary_rule": "Require observed open state before and after a closure; invalidate interrupted events.",
+    "warning": "These are artificial fixture conventions, not validated physiological thresholds."
+  },
+  "scenarios": [
+    {
+      "scenario_id": "three_blinks",
+      "frame_rows": 360,
+      "observation_end_ms": 12000,
+      "injected_bilateral_intervals_ms": [
+        [
+          2000,
+          2200
+        ],
+        [
+          5000,
+          5200
+        ],
+        [
+          8000,
+          8200
+        ]
+      ],
+      "injected_left_only_intervals_ms": [],
+      "invalid_intervals_ms": [],
+      "expected_complete_bilateral_blinks": 3,
+      "expected_sustained_closures": 0,
+      "assert_event_metrics": true,
+      "special_expectation": "Count only complete, valid bilateral events under the fixture test policy."
+    },
+    {
+      "scenario_id": "no_blinks",
+      "frame_rows": 360,
+      "observation_end_ms": 12000,
+      "injected_bilateral_intervals_ms": [],
+      "injected_left_only_intervals_ms": [],
+      "invalid_intervals_ms": [],
+      "expected_complete_bilateral_blinks": 0,
+      "expected_sustained_closures": 0,
+      "assert_event_metrics": true,
+      "special_expectation": "Count only complete, valid bilateral events under the fixture test policy."
+    },
+    {
+      "scenario_id": "left_wink_only",
+      "frame_rows": 360,
+      "observation_end_ms": 12000,
+      "injected_bilateral_intervals_ms": [],
+      "injected_left_only_intervals_ms": [
+        [
+          5000,
+          5300
+        ]
+      ],
+      "invalid_intervals_ms": [],
+      "expected_complete_bilateral_blinks": 0,
+      "expected_sustained_closures": 0,
+      "assert_event_metrics": true,
+      "special_expectation": "Count only complete, valid bilateral events under the fixture test policy."
+    },
+    {
+      "scenario_id": "sustained_closure",
+      "frame_rows": 360,
+      "observation_end_ms": 12000,
+      "injected_bilateral_intervals_ms": [
+        [
+          5000,
+          6500
+        ]
+      ],
+      "injected_left_only_intervals_ms": [],
+      "invalid_intervals_ms": [],
+      "expected_complete_bilateral_blinks": 0,
+      "expected_sustained_closures": 1,
+      "assert_event_metrics": true,
+      "special_expectation": "Count only complete, valid bilateral events under the fixture test policy."
+    },
+    {
+      "scenario_id": "hidden_blink",
+      "frame_rows": 360,
+      "observation_end_ms": 12000,
+      "injected_bilateral_intervals_ms": [
+        [
+          2000,
+          2200
+        ],
+        [
+          5000,
+          5200
+        ],
+        [
+          8000,
+          8200
+        ]
+      ],
+      "injected_left_only_intervals_ms": [],
+      "invalid_intervals_ms": [
+        [
+          4800,
+          5600
+        ]
+      ],
+      "expected_complete_bilateral_blinks": 2,
+      "expected_sustained_closures": 0,
+      "assert_event_metrics": true,
+      "special_expectation": "Count only complete, valid bilateral events under the fixture test policy."
+    },
+    {
+      "scenario_id": "interrupted_closure",
+      "frame_rows": 360,
+      "observation_end_ms": 12000,
+      "injected_bilateral_intervals_ms": [
+        [
+          2000,
+          2200
+        ],
+        [
+          4500,
+          5200
+        ],
+        [
+          8000,
+          8200
+        ]
+      ],
+      "injected_left_only_intervals_ms": [],
+      "invalid_intervals_ms": [
+        [
+          4800,
+          5600
+        ]
+      ],
+      "expected_complete_bilateral_blinks": 2,
+      "expected_sustained_closures": 0,
+      "assert_event_metrics": true,
+      "special_expectation": "Count only complete, valid bilateral events under the fixture test policy."
+    },
+    {
+      "scenario_id": "irregular_sampling",
+      "frame_rows": 321,
+      "observation_end_ms": 12000,
+      "injected_bilateral_intervals_ms": [
+        [
+          2000,
+          2200
+        ],
+        [
+          5000,
+          5200
+        ],
+        [
+          8000,
+          8200
+        ]
+      ],
+      "injected_left_only_intervals_ms": [],
+      "invalid_intervals_ms": [],
+      "expected_complete_bilateral_blinks": 3,
+      "expected_sustained_closures": 0,
+      "assert_event_metrics": true,
+      "special_expectation": "Count only complete, valid bilateral events under the fixture test policy."
+    },
+    {
+      "scenario_id": "jaw_motion_only",
+      "frame_rows": 360,
+      "observation_end_ms": 12000,
+      "injected_bilateral_intervals_ms": [],
+      "injected_left_only_intervals_ms": [],
+      "invalid_intervals_ms": [],
+      "expected_complete_bilateral_blinks": 0,
+      "expected_sustained_closures": 0,
+      "assert_event_metrics": true,
+      "special_expectation": "Count only complete, valid bilateral events under the fixture test policy."
+    },
+    {
+      "scenario_id": "no_tracking",
+      "frame_rows": 360,
+      "observation_end_ms": 12000,
+      "injected_bilateral_intervals_ms": [],
+      "injected_left_only_intervals_ms": [],
+      "invalid_intervals_ms": [
+        [
+          0,
+          12000
+        ]
+      ],
+      "expected_complete_bilateral_blinks": null,
+      "expected_sustained_closures": null,
+      "assert_event_metrics": false,
+      "special_expectation": "Return unavailable event metrics; no fatigue label exists."
+    },
+    {
+      "scenario_id": "low_rate_2fps",
+      "frame_rows": 24,
+      "observation_end_ms": 12000,
+      "injected_bilateral_intervals_ms": [
+        [
+          2000,
+          2200
+        ],
+        [
+          5000,
+          5200
+        ],
+        [
+          8000,
+          8200
+        ]
+      ],
+      "injected_left_only_intervals_ms": [],
+      "invalid_intervals_ms": [],
+      "expected_complete_bilateral_blinks": null,
+      "expected_sustained_closures": null,
+      "assert_event_metrics": false,
+      "special_expectation": "Return unavailable event metrics; no fatigue label exists."
+    }
+  ]
+}

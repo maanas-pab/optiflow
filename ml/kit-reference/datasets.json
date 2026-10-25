@@ -1,0 +1,195 @@
+[
+  {
+    "id": "uta-rldd",
+    "name": "UTA Real-Life Drowsiness Dataset (UTA-RLDD)",
+    "researchers": [
+      "Reza Ghoddoosian",
+      "Marnim Galib",
+      "Vassilis Athitsos"
+    ],
+    "origin": "Vision-Learning-Mining Lab, University of Texas at Arlington, USA",
+    "year": 2019,
+    "url": "https://sites.google.com/view/utarldd/home",
+    "paper_url": "https://arxiv.org/abs/1904.07312",
+    "data": "RGB video from participant cellphones/webcams; 60 participants and 180 videos, approximately 30 hours.",
+    "labels": "Participant-reported alert, low-vigilant, and drowsy clip classes; numeric codes 0, 5, 10 are category encodings.",
+    "role": "Separate temporal drowsiness benchmark.",
+    "limitation": "Clip classes are not stress, mental health, or continuous KSS labels. Verify transfer to desk use.",
+    "access": "Author page links to a Google Drive archive; listed at roughly 111 GB. Preserve participant folds.",
+    "rights": "Verify research and redistribution terms. Only a subset of participant faces may be shown in publications according to the author page.",
+    "paper_ids": [
+      "P02"
+    ],
+    "record_type": "dataset",
+    "reviewed_at": "2026-10-24",
+    "project_usage_status": "research_reference",
+    "download_status": "not_downloaded",
+    "used_for_training": false,
+    "validated_on": false,
+    "local_path": null,
+    "checksum": null
+  },
+  {
+    "id": "cogbeacon",
+    "name": "CogBeacon",
+    "researchers": [
+      "Michalis Papakostas",
+      "Akilesh Rajavenkatanarayanan",
+      "Fillia Makedon"
+    ],
+    "origin": "University of Texas at Arlington; author dataset repository",
+    "year": 2019,
+    "url": "https://github.com/MikeMpapa/CogBeacon-MultiModal_Dataset_for_Cognitive_Fatigue",
+    "paper_url": "https://doi.org/10.3390/technologies7020046",
+    "data": "19 participants, 76 sessions; EEG, facial keypoints, task performance, and fatigue reports.",
+    "labels": "Cumulative participant button presses indicating difficulty keeping up, plus task outcomes; not KSS.",
+    "role": "Collection-method reference and low-frequency cognitive-fatigue experiments.",
+    "limitation": "68 facial landmarks sampled at 2 FPS cannot resolve normal blink timing. EEG is unavailable in webcam-only deployment.",
+    "access": "Repository describes data folders and linked analysis/data downloads; inspect completeness before use.",
+    "rights": "Do not infer data/model rights from public visibility. Confirm terms for the intended use.",
+    "paper_ids": [
+      "P03"
+    ],
+    "record_type": "dataset",
+    "reviewed_at": "2026-10-24",
+    "project_usage_status": "research_reference",
+    "download_status": "not_downloaded",
+    "used_for_training": false,
+    "validated_on": false,
+    "local_path": null,
+    "checksum": null
+  },
+  {
+    "id": "yawdd",
+    "name": "YawDD: Yawning Detection Dataset",
+    "researchers": [
+      "Shabnam Abtahi",
+      "Mona Omidyeganeh",
+      "Shervin Shirmohammadi",
+      "Behnoosh Hariri"
+    ],
+    "origin": "University of Ottawa; IEEE DataPort distribution",
+    "year": 2014,
+    "url": "https://doi.org/10.21227/e1qm-hb90",
+    "paper_url": "https://doi.org/10.1145/2557642.2563678",
+    "data": "In-car RGB videos including quiet driving, speech/singing, and yawning; two camera placements.",
+    "labels": "Mouth/activity conditions; inspect archive annotations and timing.",
+    "role": "Mouth-event detection and hard negative examples for yawning.",
+    "limitation": "Mouth opening and yawning are not a validated sleepiness or stress score.",
+    "access": "IEEE DataPort listing requires login for dataset files; original paper 2014, DataPort record 2020.",
+    "rights": "Listing describes research use. Check actual terms before redistribution or commercial deployment.",
+    "paper_ids": [
+      "P19"
+    ],
+    "record_type": "dataset",
+    "reviewed_at": "2026-10-24",
+    "project_usage_status": "research_reference",
+    "download_status": "not_downloaded",
+    "used_for_training": false,
+    "validated_on": false,
+    "local_path": null,
+    "checksum": null,
+    "metadata_note": "Original paper 2014; data record 2020. Author PDF returned 404; use DOI or dataset page."
+  },
+  {
+    "id": "ubfc-rppg",
+    "name": "UBFC-rPPG",
+    "researchers": [
+      "Richard Macwan",
+      "Yannick Benezeth"
+    ],
+    "related_paper_authors": [
+      "Serge Bobbia",
+      "Richard Macwan",
+      "Yannick Benezeth",
+      "Alamin Mansouri",
+      "Julien Dubois"
+    ],
+    "origin": "Univ. Bourgogne Franche-Comté, France; author-hosted dataset page",
+    "year": null,
+    "url": "https://sites.google.com/view/ybenezeth/ubfcrppg",
+    "paper_url": "https://doi.org/10.1016/j.patrec.2017.10.017",
+    "data": "Webcam RGB with simultaneous pulse-oximeter waveform/rate reference; 8 videos in dataset 1 and 42 shared videos in dataset 2.",
+    "labels": "Reference PPG waveform and pulse rate.",
+    "role": "Initial camera pulse-estimation benchmark.",
+    "limitation": "No fatigue/stress ground truth. Inspect reference synchronization and acquisition artifacts.",
+    "access": "Author page links to data and reference-reading code.",
+    "rights": "Research sharing stated; verify current permission and redistribution terms.",
+    "paper_ids": [
+      "P20"
+    ],
+    "metadata_note": "Dataset page credits recording to Macwan and Benezeth; associated paper authors are a separate credit. Publication appeared online in 2017 and journal issue in 2019; no dataset release year inferred.",
+    "record_type": "dataset",
+    "reviewed_at": "2026-10-24",
+    "project_usage_status": "research_reference",
+    "download_status": "not_downloaded",
+    "used_for_training": false,
+    "validated_on": false,
+    "local_path": null,
+    "checksum": null
+  },
+  {
+    "id": "cohface",
+    "name": "COHFACE",
+    "researchers": [
+      "Guillaume Heusch",
+      "Sébastien Marcel",
+      "André Anjos"
+    ],
+    "origin": "Idiap Research Institute, Martigny, Switzerland",
+    "year": 2016,
+    "url": "https://www.idiap.ch/en/scientific-research/data/cohface",
+    "access_url": "https://zenodo.org/records/4081054",
+    "paper_url": "https://publications.idiap.ch/attachments/papers/2017/Heusch_ARXIV_2017.pdf",
+    "data": "160 one-minute RGB videos from 40 subjects at 20 Hz, with physiological reference recordings.",
+    "labels": "Synchronized blood volume pulse and respiration references.",
+    "role": "External pulse-estimation test under another capture setup.",
+    "limitation": "Different frame rate and conditions require explicit preprocessing and synchronization.",
+    "access": "Zenodo record is public but dataset files are restricted; request access through the official route.",
+    "rights": "Access must be granted under applicable terms. Public metadata is not blanket data permission.",
+    "paper_ids": [
+      "P21"
+    ],
+    "metadata_note": "Zenodo dataset record is dated 2016; linked paper version is 2017. Creator order differs from paper author order.",
+    "record_type": "dataset",
+    "reviewed_at": "2026-10-24",
+    "project_usage_status": "research_reference",
+    "download_status": "not_downloaded",
+    "used_for_training": false,
+    "validated_on": false,
+    "local_path": null,
+    "checksum": null
+  },
+  {
+    "id": "ubfc-phys",
+    "name": "UBFC-Phys",
+    "researchers": [
+      "Rita Meziati Sabour",
+      "Yannick Benezeth",
+      "Pierre De Oliveira",
+      "Julien Chappé",
+      "Fan Yang"
+    ],
+    "origin": "Université Bourgogne Franche-Comté, France; author page and institutional/IEEE data hosts",
+    "year": 2021,
+    "url": "https://sites.google.com/view/ybenezeth/ubfc-phys",
+    "paper_url": "https://doi.org/10.1109/TAFFC.2021.3056960",
+    "data": "56 participants; rest, speech, and arithmetic tasks; video with wrist BVP/EDA.",
+    "labels": "Task conditions, physiological recordings, and pre/post self-reported anxiety scores.",
+    "role": "Later multimodal and task-confound research.",
+    "limitation": "Task identity or speaking may be a shortcut. Anxiety reports are not per-frame labels; wrist channels cannot become required webcam inputs.",
+    "access": "Author page links to IEEE DataPort and dat@UBFC.",
+    "rights": "Inspect the selected host’s dataset terms and permission requirements.",
+    "paper_ids": [
+      "P17"
+    ],
+    "record_type": "dataset",
+    "reviewed_at": "2026-10-24",
+    "project_usage_status": "research_reference",
+    "download_status": "not_downloaded",
+    "used_for_training": false,
+    "validated_on": false,
+    "local_path": null,
+    "checksum": null
+  }
+]

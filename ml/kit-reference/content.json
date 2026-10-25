@@ -1,0 +1,93 @@
+{
+  "tab_name": "Inside OptiFlow",
+  "route": "/inside-optiflow",
+  "eyebrow": "Science, design, and evidence",
+  "title": "See the signals. Understand the limits.",
+  "subtitle": "Explore the research behind OptiFlow, the experience we are building, and how we plan to test it.",
+  "status": "Research and implementation plan",
+  "proposition": "OptiFlow is designed to turn a webcam check-in into understandable signals, personal reflection, and a practical next step—with evidence you can inspect.",
+  "proposed_signature_feature": {
+    "name": "Pulse Portrait",
+    "description": "An optional camera-derived pulse estimate, revealed as a waveform and a quiet ambient halo.",
+    "status": "planned",
+    "note": "Remote photoplethysmography is established research; the OptiFlow experience and validation workflow are our proposed contribution."
+  },
+  "pillars": [
+    {
+      "title": "Observe",
+      "body": "Measure visible events and, when validated, recover a pulse-related signal from video."
+    },
+    {
+      "title": "Explain",
+      "body": "Separate measured observations, user responses, and model estimates. Show where each result came from."
+    },
+    {
+      "title": "Reflect",
+      "body": "Invite the user to confirm how they feel and compare compatible check-ins over time."
+    },
+    {
+      "title": "Reset",
+      "body": "Offer a small activity and collect feedback about whether it helped."
+    }
+  ],
+  "sections": [
+    "Our approach",
+    "How it works",
+    "Research library",
+    "Datasets",
+    "Open-source credits",
+    "Validation & limitations",
+    "Privacy"
+  ],
+  "evidence_statuses": [
+    {
+      "id": "research_reference",
+      "label": "Research reference"
+    },
+    {
+      "id": "integrated",
+      "label": "Integrated",
+      "requires": "Pinned implementation and working evidence"
+    },
+    {
+      "id": "trained_on",
+      "label": "Used for training",
+      "requires": "Dataset permission, manifest, and training run"
+    },
+    {
+      "id": "validated_on",
+      "label": "Evaluated",
+      "requires": "Held-out evaluation report"
+    },
+    {
+      "id": "planned",
+      "label": "Planned"
+    }
+  ],
+  "methodology": [
+    "Define a specific target and original label scale.",
+    "Measure events and compare them with authorized annotations.",
+    "Collect genuine self-reports separately from predictions.",
+    "Split participants and recordings before creating windows.",
+    "Compare simple and advanced models on untouched data.",
+    "Test browser parity, rejection behavior, and device conditions.",
+    "Publish limitations and measured results as they become available."
+  ],
+  "validation": {
+    "status": "No OptiFlow model validation supplied in this kit",
+    "trained_models": 0,
+    "real_participant_records_in_kit": 0,
+    "synthetic_engineering_rows": 3225,
+    "synthetic_scenarios": 10,
+    "synthetic_checks": "Passed the supplied reference checker; not human measurement validation",
+    "metrics": []
+  },
+  "privacy": {
+    "status": "Implementation requirements",
+    "body": "Process frames locally by default, retain summaries only by choice, stop capture on exit, and offer export/delete. Verify network behavior before claiming these requirements are implemented."
+  },
+  "attribution": "OptiFlow builds on the credited researchers and open-source contributors. Inclusion does not imply their endorsement.",
+  "dataset_catalog": "../source_catalog/datasets.json",
+  "paper_catalog": "../source_catalog/papers.json",
+  "repository_catalog": "../source_catalog/repositories.json"
+}

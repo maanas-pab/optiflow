@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "global_rules": [
+    "No synthetic health labels",
+    "No incompatible endpoint pooling",
+    "No frame-random split for new-person claims",
+    "No metric without evaluation report"
+  ],
+  "tasks": [
+    {
+      "id": "blink_measurement",
+      "dataset_ids": [],
+      "additional_data": "Authorized event-annotated real video",
+      "target": "Complete bilateral eye-closure events",
+      "split_unit": "participant_and_recording",
+      "primary_metric": "event_precision_recall",
+      "status": "requires_data"
+    },
+    {
+      "id": "rldd_drowsiness",
+      "dataset_ids": [
+        "uta-rldd"
+      ],
+      "target": "Original alert/low-vigilant/drowsy category",
+      "split_unit": "participant",
+      "primary_metric": "macro_f1",
+      "status": "requires_access_and_training"
+    },
+    {
+      "id": "desk_sleepiness",
+      "dataset_ids": [],
+      "additional_data": "Consented local sessions with genuine KSS responses",
+      "target": "Current subjective KSS 1-9",
+      "split_unit": "participant; separate chronological personalization experiment",
+      "primary_metric": "mae_in_kss_points",
+      "status": "requires_collection"
+    },
+    {
+      "id": "mouth_events",
+      "dataset_ids": [
+        "yawdd"
+      ],
+      "target": "Original mouth-event labels after archive inspection",
+      "split_unit": "participant",
+      "primary_metric": "class_or_event_metrics_matching_annotation_scope",
+      "status": "requires_access_and_annotation_inspection"
+    },
+    {
+      "id": "pulse",
+      "dataset_ids": [
+        "ubfc-rppg",
+        "cohface"
+      ],
+      "target": "Reference pulse rate and waveform",
+      "split_unit": "participant_and_external_dataset",
+      "primary_metric": "pulse_rate_mae_bpm_with_coverage",
+      "status": "requires_access_and_validation"
+    },
+    {
+      "id": "cognitive_fatigue_exploration",
+      "dataset_ids": [
+        "cogbeacon"
+      ],
+      "target": "Original event-report target; not KSS",
+      "split_unit": "participant",
+      "primary_metric": "define_after_label_audit",
+      "status": "exploratory"
+    },
+    {
+      "id": "stress_context_exploration",
+      "dataset_ids": [
+        "ubfc-phys"
+      ],
+      "target": "Original documented endpoint; no consumer stress claim",
+      "split_unit": "participant_with_task_confound_analysis",
+      "primary_metric": "define_after_endpoint_audit",
+      "status": "exploratory"
+    }
+  ]
+}

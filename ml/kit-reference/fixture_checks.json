@@ -1,0 +1,66 @@
+{
+  "scope": "Internal synthetic fixture consistency and simple reference event counting only; no human validation.",
+  "rows": 3225,
+  "checks": [
+    {
+      "scenario_id": "three_blinks",
+      "status": "passed",
+      "actual_blinks": 3,
+      "actual_sustained": 0
+    },
+    {
+      "scenario_id": "no_blinks",
+      "status": "passed",
+      "actual_blinks": 0,
+      "actual_sustained": 0
+    },
+    {
+      "scenario_id": "left_wink_only",
+      "status": "passed",
+      "actual_blinks": 0,
+      "actual_sustained": 0
+    },
+    {
+      "scenario_id": "sustained_closure",
+      "status": "passed",
+      "actual_blinks": 0,
+      "actual_sustained": 1
+    },
+    {
+      "scenario_id": "hidden_blink",
+      "status": "passed",
+      "actual_blinks": 2,
+      "actual_sustained": 0
+    },
+    {
+      "scenario_id": "interrupted_closure",
+      "status": "passed",
+      "actual_blinks": 2,
+      "actual_sustained": 0
+    },
+    {
+      "scenario_id": "irregular_sampling",
+      "status": "passed",
+      "actual_blinks": 3,
+      "actual_sustained": 0
+    },
+    {
+      "scenario_id": "jaw_motion_only",
+      "status": "passed",
+      "actual_blinks": 0,
+      "actual_sustained": 0
+    },
+    {
+      "scenario_id": "no_tracking",
+      "status": "passed",
+      "actual_blinks": null,
+      "actual_sustained": null
+    },
+    {
+      "scenario_id": "low_rate_2fps",
+      "status": "passed",
+      "actual_blinks": null,
+      "actual_sustained": null
+    }
+  ]
+}

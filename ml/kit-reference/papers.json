@@ -1,0 +1,423 @@
+[
+  {
+    "id": "P01",
+    "record_type": "paper",
+    "title": "Real-Time Eye Blink Detection using Facial Landmarks",
+    "authors": [
+      "Tereza Soukupová",
+      "Jan Čech"
+    ],
+    "year": 2016,
+    "url": "https://vision.fe.uni-lj.si/cvww2016/proceedings/papers/05.pdf",
+    "related_urls": [],
+    "implementation_note": "Introduces eye aspect ratio and temporal blink classification. Implement a time-aware blink baseline before introducing a sequence model. Map equivalent eyelid points to MediaPipe carefully; the paper's original landmark numbering is not MediaPipe numbering. This is evidence about blink detection, not a fatigue-to-score formula.",
+    "project_usage_status": "research_reference",
+    "full_text_included": false,
+    "review_scope": "Primary source record, available paper text/abstract, or author documentation; no experiment replication.",
+    "reviewed_at": "2026-10-24"
+  },
+  {
+    "id": "P02",
+    "record_type": "paper",
+    "title": "A Realistic Dataset and Baseline Temporal Model for Early Drowsiness Detection",
+    "authors": [
+      "Reza Ghoddoosian",
+      "Marnim Galib",
+      "Vassilis Athitsos"
+    ],
+    "year": 2019,
+    "url": "https://arxiv.org/abs/1904.07312",
+    "related_urls": [],
+    "implementation_note": "Uses sequential blink features with a hierarchical multiscale LSTM and introduces UTA-RLDD. Useful precedent for predicting from temporal behavior instead of a single face image. Reproduce a simpler baseline first. Its drowsiness benchmark does not establish accuracy for ordinary desk work or stress.",
+    "project_usage_status": "research_reference",
+    "full_text_included": false,
+    "review_scope": "Primary source record, available paper text/abstract, or author documentation; no experiment replication.",
+    "reviewed_at": "2026-10-24"
+  },
+  {
+    "id": "P03",
+    "record_type": "paper",
+    "title": "CogBeacon: A Multi-Modal Dataset and Data-Collection Platform for Modeling Cognitive Fatigue",
+    "authors": [
+      "Michalis Papakostas",
+      "Akilesh Rajavenkatanarayanan",
+      "Fillia Makedon"
+    ],
+    "year": 2019,
+    "url": "https://doi.org/10.3390/technologies7020046",
+    "related_urls": [
+      "https://github.com/MikeMpapa/CogBeacon-MultiModal_Dataset_for_Cognitive_Fatigue"
+    ],
+    "implementation_note": "Useful precedent for coupling facial observations, self-report, and performance. Paper metadata and collection details were verified in the author repository; the publisher page was rate-limited during this review. Inspect its target definitions before attempting reproduction.",
+    "project_usage_status": "research_reference",
+    "full_text_included": false,
+    "review_scope": "Primary source record, available paper text/abstract, or author documentation; no experiment replication.",
+    "reviewed_at": "2026-10-24",
+    "metadata_source": "https://par.nsf.gov/servlets/purl/10467947",
+    "access_note": "Author repository checked; NSF record appeared in search but returned 502 on direct fetch."
+  },
+  {
+    "id": "P04",
+    "record_type": "paper",
+    "title": "Evaluation of Techniques for Ocular Measurement as an Index of Fatigue and as the Basis for Alertness Management",
+    "authors": [
+      "David F. Dinges",
+      "Malissa M. Mallis",
+      "Greg Maislin",
+      "John Walker Powell"
+    ],
+    "year": 1998,
+    "url": "https://rosap.ntl.bts.gov/view/dot/2518",
+    "related_urls": [],
+    "implementation_note": "Evaluates ocular measures against vigilance under controlled sleep deprivation. It motivates studying sustained closure, but does not validate a landmark threshold on an arbitrary webcam. Define closure percentage, blink exclusions, observation window, and denominator before using the name PERCLOS.",
+    "project_usage_status": "research_reference",
+    "full_text_included": false,
+    "review_scope": "Primary source record, available paper text/abstract, or author documentation; no experiment replication.",
+    "reviewed_at": "2026-10-24"
+  },
+  {
+    "id": "P05",
+    "record_type": "paper",
+    "title": "Validation of the Karolinska Sleepiness Scale against Performance and EEG Variables",
+    "authors": [
+      "Kosuke Kaida",
+      "Masaya Takahashi",
+      "Torbjörn Åkerstedt",
+      "Akinori Nakata",
+      "Yasumasa Otsuka",
+      "Takashi Haratani",
+      "Kenji Fukasawa"
+    ],
+    "year": 2006,
+    "url": "https://pubmed.ncbi.nlm.nih.gov/16679057/",
+    "related_urls": [],
+    "implementation_note": "Supports KSS as a subjective sleepiness instrument in the studied setting. Use the specified scale, wording, timing, and version when collecting comparable labels. A homemade 0–10 slider is not KSS. Self-report remains a subjective label, not an objective diagnosis.",
+    "project_usage_status": "research_reference",
+    "full_text_included": false,
+    "review_scope": "Primary source record, available paper text/abstract, or author documentation; no experiment replication.",
+    "reviewed_at": "2026-10-24"
+  },
+  {
+    "id": "P06",
+    "record_type": "instrument",
+    "title": "NASA Task Load Index",
+    "authors": [
+      "NASA Human Systems Integration Division"
+    ],
+    "year": null,
+    "url": "https://www.nasa.gov/human-systems-integration-division/nasa-task-load-index-tlx/",
+    "related_urls": [],
+    "implementation_note": "Useful for a distinct task-workload experiment. Record whether the full weighted method or a documented raw version is used; preserve subscale direction and scoring. Do not rename a generic stress slider NASA-TLX, or use task workload as a sleepiness label.",
+    "project_usage_status": "research_reference",
+    "full_text_included": false,
+    "review_scope": "Primary source record, available paper text/abstract, or author documentation; no experiment replication.",
+    "reviewed_at": "2026-10-24",
+    "credit_note": "Institutional resource, not a paper; NASA-TLX development is associated with Sandra G. Hart and Lowell E. Staveland."
+  },
+  {
+    "id": "P07",
+    "record_type": "paper",
+    "title": "Validity and Sensitivity of a Brief Psychomotor Vigilance Test to Total and Partial Sleep Deprivation",
+    "authors": [
+      "Mathias Basner",
+      "Daniel Mollicone",
+      "David F. Dinges"
+    ],
+    "year": 2011,
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3197786/",
+    "related_urls": [],
+    "implementation_note": "Investigates a three-minute protocol. Useful for adding a behavioral channel beyond the camera. A 20-second click game is an engagement feature, not this validated test. Preserve stimulus timing and outcome definitions if implementing a research-oriented adaptation.",
+    "project_usage_status": "research_reference",
+    "full_text_included": false,
+    "review_scope": "Primary source record, available paper text/abstract, or author documentation; no experiment replication.",
+    "reviewed_at": "2026-10-24"
+  },
+  {
+    "id": "P08",
+    "record_type": "paper",
+    "title": "The 3-Minute Psychomotor Vigilance Test Demonstrates Inadequate Convergent Validity Relative to the 10-Minute Psychomotor Vigilance Test Across Sleep Loss and Recovery, 2022",
+    "authors": [
+      "Caroline A. Antler",
+      "Erika M. Yamazaki",
+      "Courtney E. Casale",
+      "Tess E. Brieva",
+      "Namni Goel"
+    ],
+    "year": 2022,
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8885985/",
+    "related_urls": [],
+    "implementation_note": "Important counterweight to P07: short and long versions are not interchangeable. Browser/device timing adds another adaptation requiring validation. Report local reaction-time observations without labeling the user impaired or unfit to drive.",
+    "project_usage_status": "research_reference",
+    "full_text_included": false,
+    "review_scope": "Primary source record, available paper text/abstract, or author documentation; no experiment replication.",
+    "reviewed_at": "2026-10-24"
+  },
+  {
+    "id": "P09",
+    "record_type": "paper",
+    "title": "Humans Quickly Learn to Blink Strategically in Response to Environmental Task Demands, 2018",
+    "authors": [
+      "David Hoppe",
+      "Stefan Helfmann",
+      "Constantin A. Rothkopf"
+    ],
+    "year": 2018,
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5834680/",
+    "related_urls": [],
+    "implementation_note": "Shows why task context matters. Store whether a scan occurred during reading, a reaction task, conversation, or quiet viewing. Compare like with like rather than interpreting every blink-rate change as fatigue.",
+    "project_usage_status": "research_reference",
+    "full_text_included": false,
+    "review_scope": "Primary source record, available paper text/abstract, or author documentation; no experiment replication.",
+    "reviewed_at": "2026-10-24"
+  },
+  {
+    "id": "P10",
+    "record_type": "paper",
+    "title": "Multiple Levels of Mental Attentional Demand Modulate Peak Saccade Velocity and Blink Rate, 2022",
+    "authors": [
+      "Valentina Bachurina",
+      "Marie Arsalidou"
+    ],
+    "year": 2022,
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8800024/",
+    "related_urls": [],
+    "implementation_note": "Useful evidence that ocular behavior varies with experimental demand. Do not transplant high-quality eye-tracker measurements such as saccade velocity into a low-frame-rate webcam without separate measurement validation.",
+    "project_usage_status": "research_reference",
+    "full_text_included": false,
+    "review_scope": "Primary source record, available paper text/abstract, or author documentation; no experiment replication.",
+    "reviewed_at": "2026-10-24"
+  },
+  {
+    "id": "P11",
+    "record_type": "paper",
+    "title": "Algorithmic Principles of Remote PPG",
+    "authors": [
+      "Wenjin Wang",
+      "Albertus C. den Brinker",
+      "Sander Stuijk",
+      "Gerard de Haan"
+    ],
+    "year": 2017,
+    "url": "https://pubmed.ncbi.nlm.nih.gov/28113245/",
+    "related_urls": [],
+    "implementation_note": "Foundational source for the POS approach to recovering a pulse-related signal from skin-color variation. Build a signal-processing baseline before training a neural model. A pulse-rate estimate does not automatically provide reliable beat-to-beat variability or stress.",
+    "project_usage_status": "research_reference",
+    "full_text_included": false,
+    "review_scope": "Primary source record, available paper text/abstract, or author documentation; no experiment replication.",
+    "reviewed_at": "2026-10-24"
+  },
+  {
+    "id": "P12",
+    "record_type": "paper",
+    "title": "DeepPhys: Video-Based Physiological Measurement Using Convolutional Attention Networks",
+    "authors": [
+      "Weixuan Chen",
+      "Daniel McDuff"
+    ],
+    "year": 2018,
+    "url": "https://arxiv.org/abs/1805.07888",
+    "related_urls": [],
+    "implementation_note": "Reference for appearance/motion representations and attention-based physiological sensing. Useful for understanding why an rPPG model needs RGB video signals, not only facial coordinates. Attention maps are not proof of causal explanation.",
+    "project_usage_status": "research_reference",
+    "full_text_included": false,
+    "review_scope": "Primary source record, available paper text/abstract, or author documentation; no experiment replication.",
+    "reviewed_at": "2026-10-24"
+  },
+  {
+    "id": "P13",
+    "record_type": "paper",
+    "title": "Multi-Task Temporal Shift Attention Networks for On-Device Contactless Vitals Measurement, 2020",
+    "authors": [
+      "Xin Liu",
+      "Josh Fromm",
+      "Shwetak Patel",
+      "Daniel McDuff"
+    ],
+    "year": 2020,
+    "url": "https://arxiv.org/abs/2006.03790",
+    "related_urls": [
+      "https://github.com/ubicomplab/rppg-web"
+    ],
+    "implementation_note": "Reference for efficient temporal physiological sensing and an existing browser demo. This is a feasible route to an impressive optional feature, but its performance must be measured on your runtime and devices.",
+    "project_usage_status": "research_reference",
+    "full_text_included": false,
+    "review_scope": "Primary source record, available paper text/abstract, or author documentation; no experiment replication.",
+    "reviewed_at": "2026-10-24"
+  },
+  {
+    "id": "P14",
+    "record_type": "paper",
+    "title": "rPPG-Toolbox: Deep Remote PPG Toolbox, NeurIPS 2023",
+    "authors": [
+      "Xin Liu",
+      "Girish Narayanswamy",
+      "Akshay Paruchuri",
+      "Xiaoyu Zhang",
+      "Jiankai Tang",
+      "Yuzhe Zhang",
+      "Roni Sengupta",
+      "Shwetak Patel",
+      "Yuntao Wang",
+      "Daniel McDuff"
+    ],
+    "year": 2023,
+    "url": "https://proceedings.neurips.cc/paper_files/paper/2023/file/d7d0d548a6317407e02230f15ce75817-Paper-Datasets_and_Benchmarks.pdf",
+    "related_urls": [
+      "https://github.com/ubicomplab/rPPG-Toolbox"
+    ],
+    "implementation_note": "Provides a research framework for comparing signal-processing and learned approaches with dataset loaders and evaluation. Reuse its experimental discipline rather than selecting the highest headline number from unrelated benchmarks.",
+    "project_usage_status": "research_reference",
+    "full_text_included": false,
+    "review_scope": "Primary source record, available paper text/abstract, or author documentation; no experiment replication.",
+    "reviewed_at": "2026-10-24",
+    "credit_note": "Authors follow the NeurIPS 2023 proceedings PDF. The arXiv record uses a different Sengupta name; cite the version actually used."
+  },
+  {
+    "id": "P15",
+    "record_type": "paper",
+    "title": "SCAMPS: Synthetics for Camera Measurement of Physiological Signals, 2022",
+    "authors": [
+      "Daniel McDuff",
+      "Miah Wander",
+      "Xin Liu",
+      "Brian L. Hill",
+      "Javier Hernandez",
+      "Jonathan Lester",
+      "Tadas Baltrusaitis"
+    ],
+    "year": 2022,
+    "url": "https://arxiv.org/abs/2206.04197",
+    "related_urls": [
+      "https://github.com/danmcduff/scampsdataset"
+    ],
+    "implementation_note": "An example of synthetic data with an explicit physiological rendering model. Useful for augmentation or pretraining research, followed by real-human evaluation. It does not justify inventing CSV fatigue labels from assumptions.",
+    "project_usage_status": "research_reference",
+    "full_text_included": false,
+    "review_scope": "Primary source record, available paper text/abstract, or author documentation; no experiment replication.",
+    "reviewed_at": "2026-10-24"
+  },
+  {
+    "id": "P16",
+    "record_type": "paper",
+    "title": "MMPD: Multi-Domain Mobile Video Physiology Dataset, 2023",
+    "authors": [
+      "Jiankai Tang",
+      "Kequan Chen",
+      "Yuntao Wang",
+      "Yuanchun Shi",
+      "Shwetak Patel",
+      "Daniel McDuff",
+      "Xin Liu"
+    ],
+    "year": 2023,
+    "url": "https://arxiv.org/abs/2302.03840",
+    "related_urls": [
+      "https://github.com/THU-CS-PI/MMPD_rPPG_dataset"
+    ],
+    "implementation_note": "Useful for investigating variation in skin tone, motion, and illumination. Treat domain diversity and licensing as first-class requirements, not an afterthought to a successful single-person demo.",
+    "project_usage_status": "research_reference",
+    "full_text_included": false,
+    "review_scope": "Primary source record, available paper text/abstract, or author documentation; no experiment replication.",
+    "reviewed_at": "2026-10-24"
+  },
+  {
+    "id": "P17",
+    "record_type": "paper",
+    "title": "UBFC-Phys: A Multimodal Database for Psychophysiological Studies of Social Stress, 2021",
+    "authors": [
+      "Rita Meziati Sabour",
+      "Yannick Benezeth",
+      "Pierre De Oliveira",
+      "Julien Chappé",
+      "Fan Yang"
+    ],
+    "year": 2021,
+    "url": "https://sites.google.com/view/ybenezeth/ubfc-phys",
+    "related_urls": [],
+    "implementation_note": "Provides video, physiology, and self-report under a social-stress protocol. Useful for a future multimodal research study. A model might learn speaking versus resting rather than stress; include task-confound checks.",
+    "project_usage_status": "research_reference",
+    "full_text_included": false,
+    "review_scope": "Primary source record, available paper text/abstract, or author documentation; no experiment replication.",
+    "reviewed_at": "2026-10-24"
+  },
+  {
+    "id": "P18",
+    "record_type": "paper",
+    "title": "Emotional Expressions Reconsidered: Challenges to Inferring Emotion From Human Facial Movements",
+    "authors": [
+      "Lisa Feldman Barrett",
+      "Ralph Adolphs",
+      "Stacy Marsella",
+      "Aleix M. Martinez",
+      "Seth D. Pollak"
+    ],
+    "year": 2019,
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6640856/",
+    "related_urls": [],
+    "implementation_note": "Read before naming any output “stress,” “emotion,” or “mental health.” The practical product implication is to distinguish observed movements, model estimates of defined labels, and user-reported experience.",
+    "project_usage_status": "research_reference",
+    "full_text_included": false,
+    "review_scope": "Primary source record, available paper text/abstract, or author documentation; no experiment replication.",
+    "reviewed_at": "2026-10-24"
+  },
+  {
+    "id": "P19",
+    "record_type": "paper",
+    "title": "YawDD: A Yawning Detection Dataset",
+    "authors": [
+      "Shabnam Abtahi",
+      "Mona Omidyeganeh",
+      "Shervin Shirmohammadi",
+      "Behnoosh Hariri"
+    ],
+    "year": 2014,
+    "url": "https://doi.org/10.1145/2557642.2563678",
+    "related_urls": [],
+    "implementation_note": "Mouth-event dataset design; distinguish speech from yawning.",
+    "project_usage_status": "research_reference",
+    "full_text_included": false,
+    "review_scope": "Primary source metadata/author page checked; no experiment replication.",
+    "reviewed_at": "2026-10-24",
+    "access_note": "Author-hosted PDF appeared in search but returned 404 on direct fetch; DOI supplied as stable pointer. Full text not bundled."
+  },
+  {
+    "id": "P20",
+    "record_type": "paper",
+    "title": "Unsupervised skin tissue segmentation for remote photoplethysmography",
+    "authors": [
+      "Serge Bobbia",
+      "Richard Macwan",
+      "Yannick Benezeth",
+      "Alamin Mansouri",
+      "Julien Dubois"
+    ],
+    "year": 2019,
+    "url": "https://doi.org/10.1016/j.patrec.2017.10.017",
+    "related_urls": [],
+    "implementation_note": "Associated UBFC-rPPG reference; online publication 2017, journal issue 2019.",
+    "project_usage_status": "research_reference",
+    "full_text_included": false,
+    "review_scope": "Primary source metadata/author page checked; no experiment replication.",
+    "reviewed_at": "2026-10-24",
+    "metadata_source": "https://www.sciencedirect.com/science/article/pii/S0167865517303860",
+    "access_note": "DOI resolver was not accessible to the browsing tool; publisher search record and author dataset page supplied metadata."
+  },
+  {
+    "id": "P21",
+    "record_type": "paper",
+    "title": "A reproducible study on remote heart rate measurement",
+    "authors": [
+      "Guillaume Heusch",
+      "André Anjos",
+      "Sébastien Marcel"
+    ],
+    "year": 2017,
+    "url": "https://publications.idiap.ch/attachments/papers/2017/Heusch_ARXIV_2017.pdf",
+    "related_urls": [],
+    "implementation_note": "COHFACE reference; reproducibility and external-data evaluation.",
+    "project_usage_status": "research_reference",
+    "full_text_included": false,
+    "review_scope": "Primary source metadata/author page checked; no experiment replication.",
+    "reviewed_at": "2026-10-24"
+  }
+]

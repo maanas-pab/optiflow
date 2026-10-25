@@ -1,0 +1,13 @@
+export interface ResetActivity {
+  id: string; title: string; kind: 'timer' | 'breathing' | 'focus';
+  durationSec: number; description: string; steps: string[];
+}
+export const RESET_ACTIVITIES: ResetActivity[] = [
+  { id: 'breathing', title: 'Comfortable paced breathing', kind: 'breathing', durationSec: 180, description: 'Breathe at a comfortable pace. No mandatory breath holding — stop any time.', steps: ['Sit comfortably.', 'Breathe in gently for about 4 counts.', 'Breathe out gently for about 6 counts.', 'If a pace feels forced, use your own comfortable rhythm.'] },
+  { id: 'screen-break', title: 'Quiet screen break', kind: 'timer', durationSec: 120, description: 'Look away, soften your gaze, and let your eyes rest.', steps: ['Look away from the screen.', 'Soften your gaze toward something farther away.', 'Blink naturally.', 'Notice glare, brightness, and viewing distance when you return.'] },
+  { id: 'jaw-awareness', title: 'Gentle jaw awareness', kind: 'timer', durationSec: 120, description: 'Notice your jaw without forceful stretches or promises of treatment.', steps: ['Let your lips rest lightly together.', 'Notice whether your teeth are touching — they need not be.', 'Let your jaw hang softly.', 'Stop if anything feels uncomfortable.'] },
+  { id: 'shoulders', title: 'Shoulder movement break', kind: 'timer', durationSec: 180, description: 'Move gently, in a way that feels comfortable.', steps: ['Roll your shoulders slowly backward.', 'Roll them forward.', 'Reach your arms overhead if comfortable.', 'Move only within a comfortable range.'] },
+  { id: 'grounding', title: 'Grounding exercise', kind: 'timer', durationSec: 180, description: 'A quiet, sensory grounding practice at your own pace.', steps: ['Name five things you can see.', 'Four things you can touch.', 'Three things you can hear.', 'Two things you can smell, and one thing you can taste — or simply notice your surroundings.'] },
+  { id: 'walk', title: 'Short walk reminder', kind: 'timer', durationSec: 300, description: 'A reminder to move away from your desk for a few minutes.', steps: ['Stand up when you are ready.', 'Walk somewhere pleasant, indoors or out.', 'Leave your screen behind if you can.', 'Return when you feel ready.'] },
+  { id: 'focus', title: 'Custom focus / rest timer', kind: 'focus', durationSec: 1500, description: 'A customizable focus block followed by a rest prompt. Adjust the duration to fit your day.', steps: ['Choose a focus duration that fits.', 'Work on one thing, without pressure to finish it.', 'When the timer ends, take a real rest.', 'Note how you feel before and after.'] },
+];
