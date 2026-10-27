@@ -1,6 +1,6 @@
 # Deployment Guide
 
-OptiFlow is a Vite + React app that deploys easily to Vercel. It also runs fully offline via `npm run dev`.
+How this site is deployed/can be; OptiFlow is a Vite + React app that deploys easily to Vercel. It also runs fully offline via `npm run dev`.
 
 ## Option 1: Vercel (recommended)
 
