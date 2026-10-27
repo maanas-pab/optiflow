@@ -72,7 +72,7 @@ Days coloured by your mean saved score. Neutral = no camera score that day.
 ### Reset Studio — small, usable activities
 <img src="assets/screenshots/reset-studio.png" alt="Reset Studio activities" width="100%" />
 
-Comfortable paced breathing, quiet screen break, gentle jaw awareness, shoulder movement, grounding exercise, short walk reminder. No camera required.
+Comfortable paced breathing exercises, quiet screen break, gentle jaw awareness, shoulder movement, grounding exercise, short walk reminder. No camera required.
 
 ### Journal — private notes
 <img src="assets/screenshots/journal.png" alt="Journal entry" width="100%" />
