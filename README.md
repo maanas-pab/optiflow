@@ -40,42 +40,42 @@ OptiFlow does **not** claim to detect mental illness, diagnose conditions, read 
 ## Feature tour
 
 ### Today — your dashboard
-<img src="assets/screenshots/today.png" alt="Today dashboard" width="600" />
+<img src="assets/screenshots/today.png" alt="Today dashboard" width="100%" />
 
 Your most recent score, a seven-day trend, a suggested reset, and a calendar preview — all local to your device.
 
 ### Scan — the check-in
-<img src="assets/screenshots/scan.png" alt="Scan with face landmarks" width="600" />
+<img src="assets/screenshots/scan.png" alt="Scan with face landmarks" width="100%" />
 
 Face landmarks overlaid on your webcam feed. Blinks, eye openness, brow movement, jaw opening, and tension tracked in real time.
 
 ### Pulse Portrait — rPPG from your webcam
-<img src="assets/screenshots/pulse-portrait.png" alt="Pulse waveform" width="600" />
+<img src="assets/screenshots/pulse-portrait.png" alt="Pulse waveform" width="100%" />
 
 Estimated pulse from subtle skin-light changes. Experimental and unvalidated — not an ECG or contact-sensor PPG.
 
 ### Report — transparent scoring
-<img src="assets/screenshots/report.png" alt="Session report score card" width="600" />
+<img src="assets/screenshots/report.png" alt="Session report score card" width="100%" />
 
 Every score is broken into weighted components (eye comfort, tension-related movement, blink stability, head steadiness) with a transparent formula you can inspect.
 
 ### Insights — restrained trends
-<img src="assets/screenshots/insights.png" alt="Insights charts" width="600" />
+<img src="assets/screenshots/insights.png" alt="Insights charts" width="100%" />
 
 Score over time, self-reported stress & fatigue, camera observations, and morning vs afternoon comparisons. Missing dates are never extrapolated. Associations are described, never claimed as causes.
 
 ### Calendar — daily colour code
-<img src="assets/screenshots/calendar.png" alt="Calendar heatmap" width="600" />
+<img src="assets/screenshots/calendar.png" alt="Calendar heatmap" width="100%" />
 
 Days coloured by your mean saved score. Neutral = no camera score that day.
 
 ### Reset Studio — small, usable activities
-<img src="assets/screenshots/reset-studio.png" alt="Reset Studio activities" width="600" />
+<img src="assets/screenshots/reset-studio.png" alt="Reset Studio activities" width="100%" />
 
 Comfortable paced breathing, quiet screen break, gentle jaw awareness, shoulder movement, grounding exercise, short walk reminder. No camera required.
 
 ### Journal — private notes
-<img src="assets/screenshots/journal.png" alt="Journal entry" width="600" />
+<img src="assets/screenshots/journal.png" alt="Journal entry" width="100%" />
 
 Lightweight private notes with mood and energy tags you choose. The app never assigns emotions to entries or faces.
 
