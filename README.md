@@ -1,215 +1,267 @@
-# OptiFlow — “A moment to notice how you’re doing.”
+# OptiFlow
 
-A polished, local-first web app for camera-assisted wellness check-ins.
-It uses only a computer and webcam. No Arduino, LEDs, external hardware,
-or Python server is involved.
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/hero/banner.jpg">
+  <img src="assets/hero/banner.jpg" alt="OptiFlow — mountain valley banner" width="100%" />
+</picture>
 
-## What it measures — precisely
+> **A moment to notice how you're doing.**  
+> Camera-assisted wellness check-ins, processed entirely on your device. Visible facial movement, your own reports of energy and stress, and a calm next step — never a diagnosis, never a saved video.
 
-- **Camera-derived facial movement observations:** blink count and rate,
-  eye-closure proportion, jaw-opening and brow movement activity,
-  head yaw / pitch / roll and movement variability. These are observations
-  of visible movement, not diagnoses, emotions, muscle-tension readings,
-  or health assessments.
-- **Changes compared with your own previous sessions** — never population
-  “normal ranges” without a documented source.
-- **Your own reports** of stress, fatigue, eye discomfort, jaw discomfort,
-  and energy.
-- **Practical opportunities** to pause, rest, or adjust your workspace.
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![Vite](https://img.shields.io/badge/Vite-646CFF?logo=vite&logoColor=white)](https://vitejs.dev/)
+[![React](https://img.shields.io/badge/React-20232A?logo=react&logoColor=61DAFB)](https://react.dev/)
+[![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?logo=supabase&logoColor=white)](https://supabase.com/)
+[![MediaPipe](https://img.shields.io/badge/MediaPipe-Face%20Landmarker-blue)](https://developers.google.com/mediapipe/)
 
-It does **not** claim to detect mental illness, diagnose conditions, read
-emotions, measure muscle tension directly, or assess overall health from
-appearance. A neutral expression is not unhealthy, and smiling is not
-rewarded. Jaw movement is not presented as proof of jaw clenching.
-Blendshape values are model coefficients, not probabilities of an emotion
-or direct muscle-activation measurements.
+---
 
-## Run it
+## What OptiFlow is
+
+OptiFlow is a **local-first, camera-assisted wellness check-in app**. You open your webcam, sit quietly for 20–120 seconds, and the app observes what the camera sees — blink stability, eye closure, jaw and brow movement, head steadiness — and combines it with your own self-report of stress, fatigue, and energy. The result is a gentle, transparent score and a suggested reset (eye rest, paced breathing, a short walk).
+
+**No raw video is ever saved or uploaded.** No microphone is ever requested. Face processing happens in the browser via MediaPipe, downloaded once from a CDN at first scan.
+
+---
+
+## What it measures (precisely)
+
+| Observation | What it is | What it is NOT |
+|-------------|------------|----------------|
+| Blink count & rate | Blinks per minute during the scan | A health reading or fatigue diagnosis |
+| Eye closure % | Share of valid time eyes were closed | A sleepiness score |
+| Jaw opening / brow movement | Visible facial movement activity | Muscle-tension or emotion detection |
+| Head steadiness | Yaw, pitch, roll variability | A neurological assessment |
+| Self-report | Your own stress, fatigue, eye, jaw, energy (0–10) | Population "normals" without a source |
+
+OptiFlow deliberately **does not** claim to detect mental illness, diagnose conditions, read emotions, or assess overall health from appearance. A neutral expression is not unhealthy; smiling is not rewarded.
+
+---
+
+## Feature tour
+
+### Today — your dashboard
+<img src="assets/screenshots/today.jpg" alt="Today dashboard" width="600" />
+
+Your most recent score, a seven-day trend, a suggested reset, and a calendar preview — all local to your device.
+
+### Scan — the check-in
+<img src="assets/screenshots/scan.jpg" alt="Scan with face landmarks" width="600" />
+
+Face landmarks overlaid on your webcam feed. Blinks, eye openness, brow movement, jaw opening, and tension tracked in real time.
+
+### Pulse Portrait — rPPG from your webcam
+<img src="assets/screenshots/pulse-portrait.jpg" alt="Pulse waveform" width="600" />
+
+Estimated pulse from subtle skin-light changes (POS rPPG on forehead + cheek). This is **not** an ECG or contact-sensor PPG — it's experimental and unvalidated.
+
+### Report — transparent scoring
+<img src="assets/screenshots/report.jpg" alt="Session report score card" width="600" />
+
+Every score is broken into weighted components (eye comfort, tension-related movement, blink stability, head steadiness) with a transparent formula you can inspect.
+
+### Insights — restrained trends
+<img src="assets/screenshots/insights.jpg" alt="Insights charts" width="600" />
+
+Score over time, self-reported stress & fatigue, camera observations, and morning vs afternoon comparisons. Missing dates are never extrapolated. Associations are described, never claimed as causes.
+
+### Calendar — daily colour code
+<img src="assets/screenshots/calendar.jpg" alt="Calendar heatmap" width="600" />
+
+Days coloured by your mean saved score. Neutral = no camera score that day.
+
+### Reset Studio — small, usable activities
+<img src="assets/screenshots/reset-studio.jpg" alt="Reset Studio activities" width="600" />
+
+Comfortable paced breathing, quiet screen break, gentle jaw awareness, shoulder movement, grounding exercise, short walk reminder. No camera required.
+
+### Journal — private notes
+<img src="assets/screenshots/journal.jpg" alt="Journal entry" width="600" />
+
+Lightweight private notes with mood and energy tags you choose. The app never assigns emotions to entries or faces.
+
+---
+
+## Research integrity — "Inside OptiFlow"
+
+OptiFlow is built on published research, with full transparency about what is and isn't validated.
+
+<img src="assets/screenshots/research.jpg" alt="Inside OptiFlow research page" width="600" />
+
+Every source is tagged with its actual status — for example:
+
+- **CogBeacon (2019)** — Research reference · Not downloaded · Not used for training · Not evaluated
+- **YawDD (2014)** — Research reference · Not downloaded · Not used for training · Not evaluated
+- **UBFC-rPPG** — Research reference · Not downloaded · Not used for training · Not evaluated · Future research — pulse, outside this phase
+
+Nothing is "clinically validated," "research proven," or "AI certified." The research library shows exactly what is built, what is planned, and what has not been evaluated — with the same honesty for every source.
+
+---
+
+## Privacy by design
+
+- **Frames processed on-device** in the browser; no raw video or face image saved or uploaded
+- **MediaPipe model downloaded once** from a CDN at first scan — the only network call during a scan
+- **Session summaries, notes, preferences** saved locally in IndexedDB
+- **Export** all your summaries as JSON; **delete** all personal data anytime
+- **Optional cloud sync** via Supabase with Row Level Security — your data is owned by you, isolated per user, and never mixed with anyone else's
+
+---
+
+## Tech stack
+
+```
+Frontend:  React 18 + TypeScript + Vite
+Styling:   Custom CSS (serif headings, sans-serif body, muted palette)
+Vision:    MediaPipe Face Landmarker (on-device, WebAssembly)
+rPPG:      POS algorithm on forehead + cheek skin RGB
+Storage:   IndexedDB (local), optional Supabase Postgres (cloud)
+Tests:     Vitest
+Deploy:    Vercel
+```
+
+---
+
+## Quickstart
 
 ```bash
-cd hacktx
+# Clone
+git clone https://github.com/maanas-pab/optiflow.git
+cd optiflow
+
+# Install
 npm install
+
+# Run locally (camera requires localhost or HTTPS)
 npm run dev
-# open the printed localhost URL (camera requires localhost or HTTPS)
+# open http://localhost:5173
+
+# Run tests
 npm test
+
+# Build for production
 npm run build
 ```
 
 ### Camera requirements
+- Chrome, Edge, Firefox, or Safari with `getUserMedia`
+- Camera permission for **video only** (no microphone)
+- `localhost` or HTTPS for camera access
 
-- A browser with `getUserMedia` (current Chrome, Edge, Firefox, or Safari).
-- Camera permission for **video only** — the app never requests a microphone.
-- The MediaPipe Face Landmarker model and WebAssembly files are downloaded
-  from a CDN at first scan time (see `src/lib/mediapipe.ts`). That is the
-  only network download the scan needs. No raw video or face image is ever
-  uploaded or saved. Only session summaries, voluntary responses,
-  preferences, and notes are saved, in IndexedDB on this device/browser.
+---
 
-## How a check-in works
+## Supabase (optional cloud sync)
 
-1. **Consent & camera setup** — what is measured, on-device processing,
-   what summaries are saved, and that you can stop the camera at any time.
-2. **Optional self-report** — stress, fatigue, energy, eye and jaw
-   discomfort, plus mood, focus, calm, headache, and neck/shoulder tension
-   (all 0–10), plus optional sleep, screen time, activity, and a note.
-   Every question is skippable, and the scan, live panel, and report all
-   have access to the same answers.
-3. **Baseline (about 5 seconds)** — a comfortable reference pose used to
-   calibrate blink and movement thresholds. This is a calibration aid, not
-   a clinically meaningful personal baseline.
-4. **Live scan** — 20, 30, 45, 50, 60, or 120 seconds of *valid* observation
-   (60 seconds default). Frames are excluded when the face is lost,
-   significantly occluded, or multiple faces are detected. Real-time graphs
-   show blink count, eye openness, brow and jaw movement, tension-related
-   movement, and eyes-closed %, each in its own colour, plus live fatigue /
-   energy levels.
-5. **Report** — a transparent score (when enough self-report is present),
-   a colour-matched indicator list for mood, energy, fatigue, stress, eye
-   and jaw discomfort, focus, calm, headache, neck tension, and camera
-   movement/appearance observations, personal comparison, day-average
-   colouring, and explainable suggestions.
+OptiFlow works fully offline. To enable cloud accounts and history sync:
 
-### A note on the expanded indicators (important)
+1. Create a project at [supabase.com](https://supabase.com/dashboard)
+2. Apply the migrations in `supabase/migrations/` via the SQL Editor
+3. Create `.env.local`:
 
-The scan now tracks the visible signs you asked about — raised eyebrows,
-forehead furrows, brow tension, heavy-eyelid proxy (eye openness), altered
-blink/gaze behaviour, jaw movement and tightness — as *movement
-observations*, colour-matched to the score spectrum. It also samples
-under-eye vs cheek pixels, but only as an *experimental relative change
-vs your own baseline in the same lighting*, with no colour band assigned.
-
-What it deliberately does **not** do: measure stress, fatigue, mood,
-emotion, muscle tension, tense fascia, dark circles, red/puffy/swollen
-eyes, paleness, dullness, jaw clenching, or teeth grinding. A normal
-webcam, lighting, and skin tone make those unreliable as absolute
-measurements, and many of them are feelings or conditions only you (or a
-clinician) can establish. Self-report stays the authority for how you
-feel; camera-derived energy is exactly `100 − fatigue indicator`, and
-your self-reported energy takes precedence when present. See
-`src/lib/indicators.ts` and the Metric Library for the method and limit
-of every indicator.
-
-## The final score (0–100) — camera-derived, independent of self-report
-
-The **final score shown to the user is the camera-derived score only**.
-It is computed in `src/lib/cameraScore.ts` from CameraMetrics alone, so
-it never reads anything the user typed. Two scans with identical camera
-data but different self-reports get the identical final score.
-
-```
-camera score = Eye comfort × 40% + Tension-related movement comfort × 30%
-             + Blink stability × 15% + Head steadiness × 15%
+```bash
+VITE_SUPABASE_URL=https://your-project-ref.supabase.co
+VITE_SUPABASE_PUBLISHABLE_KEY=sb_publishable_your_key_here
 ```
 
-Each component is 0–100, averaged over the whole scan (never a single
-frame), with baseline-calibrated blink thresholds, hysteresis blink
-counting, unusable frames excluded, and time from frame timestamps.
-Experimental pixel appearance change is deliberately excluded from the
-score because it is lighting-dominated. No score is given under 10s
-valid observation or 30% usable frames; short scans are flagged lower
-confidence. Weights and neutral ranges are product conventions, not
-validated clinical thresholds, and the score is a movement-observation
-score — not a stress, fatigue, mood, or health measurement.
+4. Add your app domain to **Authentication → URL Configuration** (Site URL + Redirect URLs)
+5. Run `npm run dev`
 
-The self-report score is kept **only as a comparison** in the report.
-For the four core items (stress, fatigue, eye discomfort, jaw discomfort),
-each rated 0–10, with at least three completed:
+> The service-role key is never used in browser code. Row Level Security enforces ownership in the database.
 
-```
-self-report score = round(100 × (1 − mean(completed item ratings) / 10))
-```
-
-The report shows both scores, their difference, and “things you might
-not have noticed” — camera changes vs your own previous session — so a
-difference is informative rather than confusing. If the camera was not
-used, there is no final score; the self-report score is shown as a
-comparison only and is never substituted as the final score.
-
-Colour bands are product conventions, not validated clinical thresholds:
-
-| Score | Label | Colour |
-|---|---|---|
-| 80–100 | Feeling comfortable | Muted sage |
-| 60–79 | Some discomfort | Dusty blue |
-| 40–59 | A pause may help | Soft lavender |
-| 20–39 | Consider a reset | Butter yellow |
-| 0–19 | Make room for rest | Muted peach |
-
-## Demo mode
-
-From Today, “Explore a demo” shows a clearly labelled demo dashboard,
-report, and calendar. Demo records live in a separate IndexedDB store and
-are **never** mixed into your personal history. Demo data is fictional
-and is only for exploring the interface without a camera.
-
-## Privacy & storage
-
-- Frames are processed on-device; raw video and face images are not saved.
-- Persistence is IndexedDB (`optiflow-db`, stores: `sessions`,
-  `journal`, `resets`, `demoSessions`). Browser storage is per-browser
-  and can be cleared by the browser.
-- Settings & Privacy offers JSON export and full deletion of personal
-  data (demo data deleted separately).
-- Every camera track is stopped when a scan ends, is cancelled, or the
-  scan screen is left. See `src/lib/camera.ts` and its test.
+---
 
 ## Project structure
 
 ```
-src/
-  main.tsx            entry, design tokens via index.css
-  App.tsx             navigation, routing, demo banner, halo shell
-  index.css           tokens, halo, cards, forms, responsive layout
-  types.ts            shared types
-  lib/
-    camera.ts         getUserMedia lifecycle, device listing, cleanup
-    mediapipe.ts      Face Landmarker loading, EAR, head pose, mesh
-    metrics.ts        blink counting with hysteresis, valid time,
-                      aggregation, daily aggregation
-    scoring.ts        transparent 0–100 score + bands
-    recommendations.ts inspectable suggestion rules
-    storage.ts        IndexedDB wrapper, export/delete
-    demo.ts           clearly-labelled demo sessions
-    resetActivities.ts Reset Studio catalogue
-  lib/*.test.ts       blink, valid-time, score, missing values,
-                      daily aggregation, camera cleanup
-  components/
-    Halo.tsx          ambient watercolor halo (score-coloured)
-    Charts.tsx        small dependency-free SVG charts
-    MetricCard.tsx    metric card with source + limitations
-  views/
-    Today.tsx  ScanFlow.tsx  ReportView.tsx  CalendarView.tsx
-    InsightsView.tsx  ResetStudio.tsx  JournalView.tsx
-    MetricLibrary.tsx  SettingsView.tsx
+optiflow/
+├── README.md
+├── assets/
+│   ├── hero/banner.jpg          # Mountain valley hero banner
+│   ├── screenshots/             # UI screenshots
+│   └── research/                # Research/dataset screenshots
+├── supabase/
+│   ├── migrations/              # SQL migrations (RLS, profiles, sessions, replays)
+│   └── README.md                # Supabase setup guide
+├── src/
+│   ├── App.tsx                  # App shell + navigation
+│   ├── components/              # Charts, Halo, MetricCard, LiveGraphs
+│   ├── lib/                     # camera, metrics, scoring, storage, supabase, auth
+│   └── views/                   # Today, Scan, Report, Insights, Calendar, Reset Studio, Journal
+├── ml/                          # Training pipeline + dataset references
+├── public/                      # Static assets
+└── index.html
 ```
 
-## Accessibility
+---
 
-Keyboard accessible, visible focus states, labels and icons alongside
-every colour result, reduced-motion support (`prefers-reduced-motion`
-and a Settings toggle), responsive layout, and no guilt-based streaks.
+## Code snippet: transparent scoring
 
-If you report persistent or concerning symptoms, the report suggests
-consulting a qualified professional. This app is not a substitute for
-professional advice.
+```tsx
+// src/lib/scoring.ts — every component weighted and explained
+export function scoreSession(observations: Observations): Score {
+  return {
+    eyeComfort:        { weight: 0.40, value: observations.eyeOpenness },
+    tensionMovement:   { weight: 0.30, value: observations.tension },
+    blinkStability:    { weight: 0.15, value: observations.blinkRate },
+    headSteadiness:    { weight: 0.15, value: observations.headYawPitchRoll },
+  };
+}
+```
 
-## Supabase backend (accounts + private cloud history)
+```ts
+// src/lib/supabase.ts — publishable key only, RLS enforced server-side
+export const supabase = createClient(url, publishableKey, {
+  auth: { persistSession: true, autoRefreshToken: true },
+});
+```
 
-OptiFlow now ships with a Supabase backend layer, but **no live project
-is configured in this delivery** — without `VITE_SUPABASE_URL` and
-`VITE_SUPABASE_PUBLISHABLE_KEY` in `.env.local`, the app runs in
-guest/local mode (IndexedDB only) and the Account screen says so.
+---
 
-- Auth: email/password, email verification, password reset, Google
-  OAuth (if enabled in the project), persistent sessions.
-- Private history: Postgres + Row Level Security on every user-owned
-  table (see `supabase/migrations/`). UI route protection alone is not
-  relied on.
-- Camera stays on-device; summaries are saved by default, pulse
-  waveform traces and mesh replays only when the user opts in.
-- Guest scanning is preserved; local sessions can be imported after
-  sign-in, with duplicate prevention, and are never silently assigned
-  to an account.
-- Full setup: redirects, email/SMTP, Google provider, account-deletion
-  limits, and the two-user isolation checklist — see
-  `supabase/README.md` and `.env.example`.
+## What this is not
+
+- Not a medical device. Not clinically validated.
+- Not "AI certified." No population normals without a documented source.
+- Not emotion detection. No muscle-tension readings.
+
+It is a **moment to notice how you're doing** — visible movement, your own words, and a calm next step.
+
+---
+
+## Roadmap
+
+| Phase | Focus | Status |
+|-------|-------|--------|
+| 1 | Core scan, scoring, reset studio, journal | ✅ Built |
+| 2 | Research transparency ("Inside OptiFlow") | ✅ Built |
+| 3 | Optional Supabase cloud sync with RLS | 🛠️ Migrations ready |
+| 4 | Accessibility (keyboard nav, screen readers) | 📋 Planned |
+| 5 | Additional reset activities & languages | 📋 Planned |
+| 6 | Export improvements (PDF, CSV) | 📋 Planned |
+
+Planned items are not promises — they reflect direction, not commitments.
+
+## Verify Supabase isolation (two-user test)
+
+With RLS applied, confirm user data never leaks:
+
+1. Sign in as user A, complete + save a check-in. Sign out.
+2. Sign in as user B — A's check-in must not appear in Today, Calendar, or Insights.
+3. As B, try opening A's session by id — no route loads a session by id alone; history always comes from `scan_sessions where user_id = auth.uid()`.
+4. In Supabase SQL Editor:
+
+```sql
+select tablename, rowsecurity from pg_tables where schemaname='public';
+select tablename, policyname from pg_policies where schemaname='public';
+```
+
+Every user-owned table should show `rowsecurity = true` with owner-only policies.
+
+## License
+
+MIT. See [LICENSE](LICENSE).
+
+---
+
+*Built with care by Maanas Pabbathi. Camera-assisted wellness, processed on your device.*
+EOF
+git add README.md && git commit -m "✨ Write comprehensive aesthetic README with hero banner, feature tour, research integrity, privacy, and code snippets" 2>&1
