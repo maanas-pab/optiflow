@@ -81,6 +81,29 @@ Lightweight private notes with mood and energy tags you choose. The app never as
 
 ---
 
+## How it works
+
+1. **Camera** — you open your webcam and sit quietly for 20–120 seconds while face landmarks are tracked in real time.
+2. **Metrics** — the app turns those landmarks into readable observations: blink rate, eye closure, jaw opening, brow movement, and head steadiness.
+3. **Score** — your observations are combined with your own self-reported stress, fatigue, eye, jaw, and energy into a transparent, component-weighted score.
+4. **Reset** — based on your score, the app suggests a calm next step: eye rest, paced breathing, a quiet screen break, or a short walk.
+
+Everything happens in the browser. No raw video leaves your device.
+
+---
+
+## Structure
+
+| Part | What it does |
+|------|--------------|
+| Frontend | React interface with the scan, dashboard, insights, calendar, journal, and reset studio |
+| Vision | MediaPipe face landmark detection running on-device in the browser |
+| rPPG | Estimated pulse from subtle skin-light changes (experimental) |
+| Storage | Session summaries and notes saved locally in your browser |
+| Styling | Clean, calm design with serif headings and a muted palette |
+
+---
+
 ## Privacy by design
 
 - **Frames processed on-device** in the browser; no raw video or face image saved or uploaded
