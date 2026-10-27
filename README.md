@@ -276,6 +276,48 @@ It is a **moment to notice how you're doing** — visible movement, your own wor
 
 ---
 
+## Screenshot gallery
+
+<p align="center">
+  <img src="assets/screenshots/home.jpg" alt="Home" width="300" />
+  <img src="assets/screenshots/today.jpg" alt="Today" width="300" />
+  <img src="assets/screenshots/scan.jpg" alt="Scan" width="300" />
+</p>
+
+<p align="center">
+  <img src="assets/screenshots/pulse-portrait.jpg" alt="Pulse Portrait" width="300" />
+  <img src="assets/screenshots/report.jpg" alt="Report" width="300" />
+  <img src="assets/screenshots/insights.jpg" alt="Insights" width="300" />
+</p>
+
+<p align="center">
+  <img src="assets/screenshots/calendar.jpg" alt="Calendar" width="300" />
+  <img src="assets/screenshots/reset-studio.jpg" alt="Reset Studio" width="300" />
+  <img src="assets/screenshots/journal.jpg" alt="Journal" width="300" />
+</p>
+
+<p align="center">
+  <img src="assets/screenshots/research.jpg" alt="Inside OptiFlow research" width="300" />
+  <img src="assets/screenshots/datasets.jpg" alt="Research datasets" width="300" />
+</p>
+
+> Drop your attached screenshots into `assets/screenshots/` — see `assets/README.md` for the placement guide.
+
+## Deploy to Vercel
+
+1. Connect this repo to [Vercel](https://vercel.com)
+2. Add environment variables in **Project Settings → Environment Variables**:
+
+| Variable | Value |
+|----------|-------|
+| `VITE_SUPABASE_URL` | `https://ntkpnhpktcruuddbewwl.supabase.co` |
+| `VITE_SUPABASE_PUBLISHABLE_KEY` | your anon public key |
+
+3. Set both to **Config** type (the anon key is meant to be public)
+4. Deploy
+
+> In Supabase → **Authentication → URL Configuration**, add your Vercel domain to Site URL and Redirect URLs.
+
 ## Roadmap
 
 | Phase | Focus | Status |
