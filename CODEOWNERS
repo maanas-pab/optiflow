@@ -1,0 +1,17 @@
+# Code owners
+
+# Default owners
+*       @maanas-pab
+
+# Documentation
+/docs/          @maanas-pab
+*.md            @maanas-pab
+
+# Supabase migrations and backend
+/supabase/      @maanas-pab
+
+# ML pipeline
+/ml/            @maanas-pab
+
+# Source code
+/src/           @maanas-pab
