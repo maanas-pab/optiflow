@@ -9,34 +9,31 @@
 > Camera-assisted wellness check-ins, processed entirely on your device. Visible facial movement, your own reports of energy and stress, and a calm next step — never a diagnosis, never a saved video.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![Vite](https://img.shields.io/badge/Vite-646CFF?logo=vite&logoColor=white)](https://vitejs.dev/)
 [![React](https://img.shields.io/badge/React-20232A?logo=react&logoColor=61DAFB)](https://react.dev/)
-[![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?logo=supabase&logoColor=white)](https://supabase.com/)
+[![Vite](https://img.shields.io/badge/Vite-646CFF?logo=vite&logoColor=white)](https://vitejs.dev/)
 [![MediaPipe](https://img.shields.io/badge/MediaPipe-Face%20Landmarker-blue)](https://developers.google.com/mediapipe/)
-[![Tests: Vitest](https://img.shields.io/badge/Tests-Vitest-yellow)](https://vitest.dev/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 
 ---
 
 ## What OptiFlow is
 
-OptiFlow is a **local-first, camera-assisted wellness check-in app**. You open your webcam, sit quietly for 20–120 seconds, and the app observes what the camera sees — blink stability, eye closure, jaw and brow movement, head steadiness — and combines it with your own self-report of stress, fatigue, and energy. The result is a gentle, transparent score and a suggested reset (eye rest, paced breathing, a short walk).
+OptiFlow is a local-first, camera-assisted wellness check-in app. You open your webcam, sit quietly for 20–120 seconds, and the app observes what the camera sees — blink stability, eye closure, jaw and brow movement, head steadiness — and combines it with your own reports of stress, fatigue, and energy. The result is a gentle, transparent score and a suggested reset (eye rest, paced breathing, a short walk).
 
-**No raw video is ever saved or uploaded.** No microphone is ever requested. Face processing happens in the browser via MediaPipe, downloaded once from a CDN at first scan.
+**No raw video is ever saved or uploaded.** No microphone is ever requested. Face processing happens in the browser via MediaPipe.
 
 ---
 
-## What it measures (precisely)
+## What it measures
 
-| Observation | What it is | What it is NOT |
-|-------------|------------|----------------|
-| Blink count & rate | Blinks per minute during the scan | A health reading or fatigue diagnosis |
-| Eye closure % | Share of valid time eyes were closed | A sleepiness score |
-| Jaw opening / brow movement | Visible facial movement activity | Muscle-tension or emotion detection |
-| Head steadiness | Yaw, pitch, roll variability | A neurological assessment |
-| Self-report | Your own stress, fatigue, eye, jaw, energy (0–10) | Population "normals" without a source |
+| Observation | What it is |
+|-------------|------------|
+| Blink count & rate | Blinks per minute during the scan |
+| Eye closure % | Share of valid time eyes were closed |
+| Jaw opening / brow movement | Visible facial movement activity |
+| Head steadiness | Yaw, pitch, roll variability |
+| Self-report | Your own stress, fatigue, eye, jaw, energy (0–10) |
 
-OptiFlow deliberately **does not** claim to detect mental illness, diagnose conditions, read emotions, or assess overall health from appearance. A neutral expression is not unhealthy; smiling is not rewarded.
+OptiFlow does **not** claim to detect mental illness, diagnose conditions, read emotions, or assess overall health from appearance. A neutral expression is not unhealthy; smiling is not rewarded.
 
 ---
 
@@ -55,7 +52,7 @@ Face landmarks overlaid on your webcam feed. Blinks, eye openness, brow movement
 ### Pulse Portrait — rPPG from your webcam
 <img src="assets/screenshots/pulse-portrait.png" alt="Pulse waveform" width="600" />
 
-Estimated pulse from subtle skin-light changes (POS rPPG on forehead + cheek). This is **not** an ECG or contact-sensor PPG — it's experimental and unvalidated.
+Estimated pulse from subtle skin-light changes. Experimental and unvalidated — not an ECG or contact-sensor PPG.
 
 ### Report — transparent scoring
 <img src="assets/screenshots/report.png" alt="Session report score card" width="600" />
@@ -84,194 +81,19 @@ Lightweight private notes with mood and energy tags you choose. The app never as
 
 ---
 
-## Research integrity — "Inside OptiFlow"
-
-OptiFlow is built on published research, with full transparency about what is and isn't validated.
-
-<img src="assets/screenshots/research.png" alt="Inside OptiFlow research page" width="600" />
-
-Every source is tagged with its actual status — for example:
-
-- **CogBeacon (2019)** — Research reference · Not downloaded · Not used for training · Not evaluated
-- **YawDD (2014)** — Research reference · Not downloaded · Not used for training · Not evaluated
-- **UBFC-rPPG** — Research reference · Not downloaded · Not used for training · Not evaluated · Future research — pulse, outside this phase
-
-Nothing is "clinically validated," "research proven," or "AI certified." The research library shows exactly what is built, what is planned, and what has not been evaluated — with the same honesty for every source.
-
----
-
 ## Privacy by design
 
 - **Frames processed on-device** in the browser; no raw video or face image saved or uploaded
 - **MediaPipe model downloaded once** from a CDN at first scan — the only network call during a scan
 - **Session summaries, notes, preferences** saved locally in IndexedDB
 - **Export** all your summaries as JSON; **delete** all personal data anytime
-- **Optional cloud sync** via Supabase with Row Level Security — your data is owned by you, isolated per user, and never mixed with anyone else's
-
----
-
-## Tech stack
-
-```
-Frontend:  React 18 + TypeScript + Vite
-Styling:   Custom CSS (serif headings, sans-serif body, muted palette)
-Vision:    MediaPipe Face Landmarker (on-device, WebAssembly)
-rPPG:      POS algorithm on forehead + cheek skin RGB
-Storage:   IndexedDB (local), optional Supabase Postgres (cloud)
-Tests:     Vitest
-Deploy:    Vercel
-```
-
----
-
-## Code architecture
-
-### Key directories
-
-| Directory | Purpose |
-|-----------|---------|
-| `src/lib/` | Camera, metrics, scoring, storage, Supabase client, auth context |
-| `src/views/` | Today, Scan, Report, Insights, Calendar, Reset Studio, Journal |
-| `src/components/` | Charts, Halo, MetricCard, LiveGraphs |
-| `supabase/migrations/` | SQL: profiles, scan_sessions, self_reports, derived_metrics, notes, activity_feedback, replay storage |
-| `ml/` | Training pipeline + dataset references |
-
-### Data flow
-
-```
-Webcam → MediaPipe Face Landmarker → Blink / eye / jaw / brow / head metrics
-                                                      ↓
-                                              rPPG pulse estimate (optional)
-                                                      ↓
-                                              Weighted scoring formula
-                                                      ↓
-                                              Score + suggested reset
-                                                      ↓
-                                              IndexedDB (local)  or  Supabase (optional cloud)
-```
-
-### Transparent scoring example
-
-```ts
-// Every component weighted and explained
-scoreSession(observations) {
-  return {
-    eyeComfort:        { weight: 0.40, value: observations.eyeOpenness },
-    tensionMovement:   { weight: 0.30, value: observations.tension },
-    blinkStability:    { weight: 0.15, value: observations.blinkRate },
-    headSteadiness:    { weight: 0.15, value: observations.headYawPitchRoll },
-  };
-}
-```
-
-### Supabase client (publishable key only)
-
-```ts
-// src/lib/supabase.ts — service-role key never enters browser code
-export const supabase = createClient(url, publishableKey, {
-  auth: { persistSession: true, autoRefreshToken: true },
-});
-```
-
-## Quickstart
-
-```bash
-# Clone
-git clone https://github.com/maanas-pab/optiflow.git
-cd optiflow
-
-# Install
-npm install
-
-# Run locally (camera requires localhost or HTTPS)
-npm run dev
-# open http://localhost:5173
-
-# Run tests
-npm test
-
-# Build for production
-npm run build
-```
-
-### Camera requirements
-- Chrome, Edge, Firefox, or Safari with `getUserMedia`
-- Camera permission for **video only** (no microphone)
-- `localhost` or HTTPS for camera access
-
----
-
-## Supabase (optional cloud sync)
-
-OptiFlow works fully offline. To enable cloud accounts and history sync:
-
-1. Create a project at [supabase.com](https://supabase.com/dashboard)
-2. Apply the migrations in `supabase/migrations/` via the SQL Editor
-3. Create `.env.local`:
-
-```bash
-VITE_SUPABASE_URL=https://your-project-ref.supabase.co
-VITE_SUPABASE_PUBLISHABLE_KEY=sb_publishable_your_key_here
-```
-
-4. Add your app domain to **Authentication → URL Configuration** (Site URL + Redirect URLs)
-5. Run `npm run dev`
-
-> The service-role key is never used in browser code. Row Level Security enforces ownership in the database.
-
----
-
-## Project structure
-
-```
-optiflow/
-├── README.md
-├── assets/
-│   ├── hero/banner.png          # Mountain valley hero banner
-│   ├── screenshots/             # UI screenshots
-│   └── research/                # Research/dataset screenshots
-├── supabase/
-│   ├── migrations/              # SQL migrations (RLS, profiles, sessions, replays)
-│   └── README.md                # Supabase setup guide
-├── src/
-│   ├── App.tsx                  # App shell + navigation
-│   ├── components/              # Charts, Halo, MetricCard, LiveGraphs
-│   ├── lib/                     # camera, metrics, scoring, storage, supabase, auth
-│   └── views/                   # Today, Scan, Report, Insights, Calendar, Reset Studio, Journal
-├── ml/                          # Training pipeline + dataset references
-├── public/                      # Static assets
-└── index.html
-```
-
----
-
-## Code snippet: transparent scoring
-
-```tsx
-// src/lib/scoring.ts — every component weighted and explained
-export function scoreSession(observations: Observations): Score {
-  return {
-    eyeComfort:        { weight: 0.40, value: observations.eyeOpenness },
-    tensionMovement:   { weight: 0.30, value: observations.tension },
-    blinkStability:    { weight: 0.15, value: observations.blinkRate },
-    headSteadiness:    { weight: 0.15, value: observations.headYawPitchRoll },
-  };
-}
-```
-
-```ts
-// src/lib/supabase.ts — publishable key only, RLS enforced server-side
-export const supabase = createClient(url, publishableKey, {
-  auth: { persistSession: true, autoRefreshToken: true },
-});
-```
 
 ---
 
 ## What this is not
 
 - Not a medical device. Not clinically validated.
-- Not "AI certified." No population normals without a documented source.
+- Not "AI certified."
 - Not emotion detection. No muscle-tension readings.
 
 It is a **moment to notice how you're doing** — visible movement, your own words, and a calm next step.
@@ -301,68 +123,22 @@ It is a **moment to notice how you're doing** — visible movement, your own wor
 <p align="center">
   <img src="assets/screenshots/research.png" alt="Inside OptiFlow research" width="300" />
   <img src="assets/screenshots/datasets.png" alt="Research datasets" width="300" />
+  <img src="assets/screenshots/real-time-graphs-scan.png" alt="Real-time graphs scan" width="300" />
 </p>
 
 <p align="center">
-  <img src="assets/screenshots/real-time-graphs-scan.png" alt="Real-time graphs scan" width="300" />
   <img src="assets/screenshots/reset-studio-example-activity.png" alt="Reset Studio example activity" width="300" />
   <img src="assets/screenshots/privacy.png" alt="Privacy" width="300" />
 </p>
 
-> Drop your attached screenshots into `assets/screenshots/` — see `assets/README.md` for the placement guide.
-
-## Deploy to Vercel
-
-1. Connect this repo to [Vercel](https://vercel.com)
-2. Add environment variables in **Project Settings → Environment Variables**:
-
-| Variable | Value |
-|----------|-------|
-| `VITE_SUPABASE_URL` | `https://ntkpnhpktcruuddbewwl.supabase.co` |
-| `VITE_SUPABASE_PUBLISHABLE_KEY` | your anon public key |
-
-3. Set both to **Config** type (the anon key is meant to be public)
-4. Deploy
-
-> In Supabase → **Authentication → URL Configuration**, add your Vercel domain to Site URL and Redirect URLs.
-
-## Roadmap
-
-| Phase | Focus | Status |
-|-------|-------|--------|
-| 1 | Core scan, scoring, reset studio, journal | ✅ Built |
-| 2 | Research transparency ("Inside OptiFlow") | ✅ Built |
-| 3 | Optional Supabase cloud sync with RLS | 🛠️ Migrations ready |
-| 4 | Accessibility (keyboard nav, screen readers) | 📋 Planned |
-| 5 | Additional reset activities & languages | 📋 Planned |
-| 6 | Export improvements (PDF, CSV) | 📋 Planned |
-
-Planned items are not promises — they reflect direction, not commitments.
-
-## Verify Supabase isolation (two-user test)
-
-With RLS applied, confirm user data never leaks:
-
-1. Sign in as user A, complete + save a check-in. Sign out.
-2. Sign in as user B — A's check-in must not appear in Today, Calendar, or Insights.
-3. As B, try opening A's session by id — no route loads a session by id alone; history always comes from `scan_sessions where user_id = auth.uid()`.
-4. In Supabase SQL Editor:
-
-```sql
-select tablename, rowsecurity from pg_tables where schemaname='public';
-select tablename, policyname from pg_policies where schemaname='public';
-```
-
-Every user-owned table should show `rowsecurity = true` with owner-only policies.
+---
 
 ## Acknowledgments
 
 - [MediaPipe Face Landmarker](https://developers.google.com/mediapipe/) — on-device face landmark detection
-- [Supabase](https://supabase.com/) — optional cloud sync with Row Level Security
-- [Vite](https://vitejs.dev/) + [React](https://react.dev/) + [TypeScript](https://www.typescriptlang.org/) — frontend stack
-- [Vitest](https://vitest.dev/) — test suite
+- [React](https://react.dev/) + [Vite](https://vitejs.dev/) — frontend stack
 
-Datasets referenced in the research library: CogBeacon, YawDD, UBFC-rPPG, and others from the builder kit catalog — listed as research references only, not used for training.
+---
 
 ## License
 
@@ -370,6 +146,4 @@ MIT. See [LICENSE](LICENSE).
 
 ---
 
-*Built with care by Maanas Pabbathi. Camera-assisted wellness, processed on your device.*
-EOF
-git add README.md && git commit -m "✨ Write comprehensive aesthetic README with hero banner, feature tour, research integrity, privacy, and code snippets" 2>&1
+*Built with care by Maanas Pabbathi, Rohan Jannu, and Vihan Raval. Camera-assisted wellness, processed on your device.*
