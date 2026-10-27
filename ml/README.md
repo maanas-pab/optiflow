@@ -54,9 +54,3 @@ cumulative reports, or anxiety/task labels.
 - Kit synthetic fixtures (`data/synthetic_feature_traces.csv`) are
   engineering checks for measurement code only. `train.py` REFUSES any
   record whose source/provenance mentions synthetic fixtures.
-
-## rPPG / pulse
-
-Explicitly OUT OF SCOPE for this phase. UBFC-rPPG and COHFACE remain
-future research references in Inside OptiFlow. No pulse code is in
-this build.
