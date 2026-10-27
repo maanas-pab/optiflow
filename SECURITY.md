@@ -19,7 +19,6 @@ OptiFlow processes camera frames entirely on-device and never uploads raw video.
 - **No raw video or face images are saved** — only session summaries (scores, metrics, self-reports)
 - **No microphone access** — camera permission is video-only
 - **MediaPipe model loads from a CDN** at first scan — the only network call during a scan
-- **Supabase (optional)** uses Row Level Security; the service-role key is never in browser code
 - **Local-first** — IndexedDB storage means your data stays on your device unless you opt into cloud sync
 
 ## Disclosure
