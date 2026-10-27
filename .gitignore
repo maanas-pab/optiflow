@@ -50,7 +50,7 @@ supabase/seed.sql
 # Vercel
 .vercel
 
-# Python / ML
+# Python / Machine Learning
 ml/*.egg-info/
 ml/build/
 ml/dist/
