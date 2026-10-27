@@ -23,7 +23,7 @@ features. KSS is collected in the app BEFORE any prediction is shown.
 It is never merged with RLDD classes, YawDD mouth events, CogBeacon
 cumulative reports, or anxiety/task labels.
 
-## How to actually train (once you have permitted labelled data)
+## How we should actually train
 
 1. Collect sessions in the app, answering the KSS question each time.
    Export from Settings, then convert:
@@ -45,7 +45,7 @@ cumulative reports, or anxiety/task labels.
    feature version mismatches, quality gates fail, or a feature is
    missing without an imputation value.
 
-## Smoke tests (no human data — never ship these)
+## Smoke tests
 
 - `python3 ml/train.py --demo ...` proves the pipeline runs end-to-end.
   Output is marked `demo_only=true` and contains no human data.
