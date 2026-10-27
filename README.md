@@ -122,6 +122,55 @@ Deploy:    Vercel
 
 ---
 
+## Code architecture
+
+### Key directories
+
+| Directory | Purpose |
+|-----------|---------|
+| `src/lib/` | Camera, metrics, scoring, storage, Supabase client, auth context |
+| `src/views/` | Today, Scan, Report, Insights, Calendar, Reset Studio, Journal |
+| `src/components/` | Charts, Halo, MetricCard, LiveGraphs |
+| `supabase/migrations/` | SQL: profiles, scan_sessions, self_reports, derived_metrics, notes, activity_feedback, replay storage |
+| `ml/` | Training pipeline + dataset references |
+
+### Data flow
+
+```
+Webcam → MediaPipe Face Landmarker → Blink / eye / jaw / brow / head metrics
+                                                      ↓
+                                              rPPG pulse estimate (optional)
+                                                      ↓
+                                              Weighted scoring formula
+                                                      ↓
+                                              Score + suggested reset
+                                                      ↓
+                                              IndexedDB (local)  or  Supabase (optional cloud)
+```
+
+### Transparent scoring example
+
+```ts
+// Every component weighted and explained
+scoreSession(observations) {
+  return {
+    eyeComfort:        { weight: 0.40, value: observations.eyeOpenness },
+    tensionMovement:   { weight: 0.30, value: observations.tension },
+    blinkStability:    { weight: 0.15, value: observations.blinkRate },
+    headSteadiness:    { weight: 0.15, value: observations.headYawPitchRoll },
+  };
+}
+```
+
+### Supabase client (publishable key only)
+
+```ts
+// src/lib/supabase.ts — service-role key never enters browser code
+export const supabase = createClient(url, publishableKey, {
+  auth: { persistSession: true, autoRefreshToken: true },
+});
+```
+
 ## Quickstart
 
 ```bash
