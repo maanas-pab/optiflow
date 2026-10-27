@@ -41,3 +41,16 @@ ml/__pycache__/
 
 # Misc
 *.tsbuildinfo
+
+# Supabase local
+supabase/.temp/
+supabase/config.toml
+supabase/seed.sql
+
+# Vercel
+.vercel
+
+# Python / ML
+ml/*.egg-info/
+ml/build/
+ml/dist/
