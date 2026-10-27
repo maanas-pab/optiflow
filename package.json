@@ -10,6 +10,7 @@
     "webcam",
     "mediapipe",
     "rppg",
+    "remote-photoplethysmography",
     "face-landmarks",
     "local-first",
     "privacy",
