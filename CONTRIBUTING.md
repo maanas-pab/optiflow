@@ -37,4 +37,4 @@ By contributing, you agree your contributions will be licensed under the MIT Lic
 
 ---
 
-*Built by Maanas Pabbathi — a moment to notice how you're doing.*
+*Built by Maanas Pabbathi, Rohan Jannu, and Vihan Raval — a moment to notice how you're doing.*
