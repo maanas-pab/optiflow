@@ -1,6 +1,6 @@
 # Changelog
 
-## [1.0.0] — 2026-10-25
+## [1.0.0] — 2026/10/25
 
 ### Added
 - Camera-assisted wellness check-ins (blink, eye closure, jaw, brow, head movement)
