@@ -349,6 +349,15 @@ select tablename, policyname from pg_policies where schemaname='public';
 
 Every user-owned table should show `rowsecurity = true` with owner-only policies.
 
+## Acknowledgments
+
+- [MediaPipe Face Landmarker](https://developers.google.com/mediapipe/) — on-device face landmark detection
+- [Supabase](https://supabase.com/) — optional cloud sync with Row Level Security
+- [Vite](https://vitejs.dev/) + [React](https://react.dev/) + [TypeScript](https://www.typescriptlang.org/) — frontend stack
+- [Vitest](https://vitest.dev/) — test suite
+
+Datasets referenced in the research library: CogBeacon, YawDD, UBFC-rPPG, and others from the builder kit catalog — listed as research references only, not used for training.
+
 ## License
 
 MIT. See [LICENSE](LICENSE).
