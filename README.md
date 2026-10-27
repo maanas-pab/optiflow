@@ -13,6 +13,8 @@
 [![React](https://img.shields.io/badge/React-20232A?logo=react&logoColor=61DAFB)](https://react.dev/)
 [![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?logo=supabase&logoColor=white)](https://supabase.com/)
 [![MediaPipe](https://img.shields.io/badge/MediaPipe-Face%20Landmarker-blue)](https://developers.google.com/mediapipe/)
+[![Tests: Vitest](https://img.shields.io/badge/Tests-Vitest-yellow)](https://vitest.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 
 ---
 
